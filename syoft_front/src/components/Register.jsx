@@ -11,11 +11,14 @@ import {
     Button,
     Heading,
     Text,
-    useColorModeValue,
     Link,
+    useColorModeValue,
+    
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+  import {Navigate} from "react-router-dom"
+  import { Link as RouterLink } from 'react-router-dom';
   
   export  function Register() {
     const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +32,7 @@ import {
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} textAlign={'center'}>
-              Sign up
+              Register
             </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               to enjoy all of our cool features ✌️
@@ -75,6 +78,7 @@ import {
                 </InputGroup>
               </FormControl>
               <Stack spacing={10} pt={2}>
+                <RouterLink to={"/login"}>
                 <Button
                   loadingText="Submitting"
                   size="lg"
@@ -82,13 +86,15 @@ import {
                   color={'white'}
                   _hover={{
                     bg: 'blue.500',
-                  }}>
+                  }}
+                   onClick={()=><Navigate to="/login"></Navigate>} >
                   Sign up
                 </Button>
+                </RouterLink>
               </Stack>
               <Stack pt={6}>
                 <Text align={'center'}>
-                  Already a user? <Link color={'blue.400'}>Login</Link>
+                  Already a user? <Link to={"/login"} color={'blue.400'}>Login</Link>
                 </Text>
               </Stack>
             </Stack>
